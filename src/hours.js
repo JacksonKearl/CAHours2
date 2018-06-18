@@ -70,8 +70,8 @@ function TotalEffectiveHours(hours, verbose = false) {
     };
     return PayWithReason(hours)
         .map(dayBlocks => dayBlocks
-            .map(block => ({ [block.rate]: block.hours }))
-            .reduce(reducer, AllHoursInit))
+        .map(block => ({ [block.rate]: block.hours }))
+        .reduce(reducer, AllHoursInit))
         .reduce(reducer, AllHoursInit);
 }
 exports.TotalEffectiveHours = TotalEffectiveHours;

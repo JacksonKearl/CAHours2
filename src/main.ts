@@ -1,7 +1,6 @@
 import { TotalEffectiveHours, PayWithReason, PayBlock } from "./hours";
 
 const $ = (id: string) => document.getElementById(id)!
-
 window.onload = () => {
     doSubmit();
     for (let day = 1; day <= 7; day++) {
