@@ -89,9 +89,9 @@ export function TotalEffectiveHours(hours: HourEntry[], verbose: boolean = false
 
     const reducer = (a: AllHours, b: AllHours): AllHours => {
         return {
-            1: a[1] || 0 + b[1] || 0,
-            1.5: a[1.5] || 0 + b[1.5] || 0,
-            2: a[2] || 0 + b[2] || 0
+            1: (a[1] || 0) + (b[1] || 0),
+            1.5: (a[1.5] || 0) + (b[1.5] || 0),
+            2: (a[2] || 0) + (b[2] || 0)
         }
     }
 

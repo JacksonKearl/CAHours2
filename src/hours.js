@@ -63,9 +63,9 @@ function TotalEffectiveHours(hours, verbose = false) {
         console.table(PayWithReason(hours).map(payBlocksToString));
     const reducer = (a, b) => {
         return {
-            1: a[1] || 0 + b[1] || 0,
-            1.5: a[1.5] || 0 + b[1.5] || 0,
-            2: a[2] || 0 + b[2] || 0
+            1: (a[1] || 0) + (b[1] || 0),
+            1.5: (a[1.5] || 0) + (b[1.5] || 0),
+            2: (a[2] || 0) + (b[2] || 0)
         };
     };
     return PayWithReason(hours)
