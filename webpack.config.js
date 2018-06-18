@@ -4,4 +4,4 @@ module.exports = {
     filename: 'bundle.js'
   },
   mode: 'production'
-} 
+}
