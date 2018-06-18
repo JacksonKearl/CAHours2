@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CA Hours Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="bundle.js"></script>
+</head>
+
+<body>
+    <div id='container'>
+        <h1>California Overtime Calculator</h1>
+        <div id='inputs'>
+            <h4>Enter Hours:</h4>
+            <p>
+                <span class='dayname'>Thursday:</span>
+                <input type="number" id="day1" />
+            </p>
+            <p>
+                <span class='dayname'>Friday:</span>
+                <input type="number" id="day2" />
+            </p>
+            <p>
+                <span class='dayname'>Saturday:</span>
+                <input type="number" id="day3" />
+            </p>
+            <p>
+                <span class='dayname'>Sunday:</span>
+                <input type="number" id="day4" />
+            </p>
+            <p>
+                <span class='dayname'>Monday:</span>
+                <input type="number" id="day5" />
+            </p>
+            <p>
+                <span class='dayname'>Tuesday:</span>
+                <input type="number" id="day6" />
+            </p>
+            <p>
+                <span class='dayname'>Wednesday:</span>
+                <input type="number" id="day7" />
+            </p>
+        </div>
+        <div id='response'>
+            <div id='description-table'></div>
+            <p id='totalHours'>Total effective hours:
+                <span id='hoursspan'></span>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
