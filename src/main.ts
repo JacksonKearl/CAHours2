@@ -26,7 +26,10 @@ function readInputs(): number[] {
 function doSubmit() {
     let hours = readInputs();
     $('response').style.display = "block";
-    $('hoursspan').textContent = '' + TotalEffectiveHours(hours)
+    let allHours = TotalEffectiveHours(hours);
+    $('hoursspan1').textContent = '' + allHours[1]
+    $('hoursspan1.5').textContent = '' + allHours[1.5]
+    $('hoursspan2').textContent = '' + allHours[2]
     renderTable(PayWithReason(hours));
 }
 
@@ -88,4 +91,4 @@ function renderTable(data: PayBlock[][]) {
         table.appendChild(sep);
     }
     table.innerHTML += '</table>'
-} 
+}

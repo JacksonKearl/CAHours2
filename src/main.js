@@ -22,7 +22,10 @@ function readInputs() {
 function doSubmit() {
     let hours = readInputs();
     $('response').style.display = "block";
-    $('hoursspan').textContent = '' + hours_1.TotalEffectiveHours(hours);
+    let allHours = hours_1.TotalEffectiveHours(hours);
+    $('hoursspan1').textContent = '' + allHours[1];
+    $('hoursspan1.5').textContent = '' + allHours[1.5];
+    $('hoursspan2').textContent = '' + allHours[2];
     renderTable(hours_1.PayWithReason(hours));
 }
 function renderTable(data) {

@@ -53,14 +53,26 @@ function PayWithReason(hours) {
 }
 exports.PayWithReason = PayWithReason;
 let payBlocksToString = (blocks) => blocks.map(block => `${block.hours} hours @ ${block.rate}x because ${block.reason}`).join(' | ');
+const AllHoursInit = {
+    1: 0,
+    1.5: 0,
+    2: 0
+};
 function TotalEffectiveHours(hours, verbose = false) {
     if (verbose)
         console.table(PayWithReason(hours).map(payBlocksToString));
+    const reducer = (a, b) => {
+        return {
+            1: a[1] + b[1],
+            1.5: a[1.5] + b[1.5],
+            2: a[2] + b[2]
+        };
+    };
     return PayWithReason(hours)
         .map(dayBlocks => dayBlocks
-        .map(block => block.hours * block.rate)
-        .reduce(sum, 0))
-        .reduce(sum, 0);
+        .map(block => ({ [block.rate]: block.hours }))
+        .reduce(reducer, AllHoursInit))
+        .reduce(reducer, AllHoursInit);
 }
 exports.TotalEffectiveHours = TotalEffectiveHours;
 //# sourceMappingURL=hours.js.map

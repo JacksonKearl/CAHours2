@@ -74,13 +74,30 @@ export function PayWithReason(hours: HourEntry[]): PayAmountBreakdown[] {
 let payBlocksToString = (blocks: PayBlock[]): string =>
     blocks.map(block => `${block.hours} hours @ ${block.rate}x because ${block.reason}`).join(' | ');
 
-export function TotalEffectiveHours(hours: HourEntry[], verbose: boolean = false): number {
+type AllHours = {
+    [rate: number]: number,
+}
+
+const AllHoursInit = {
+    1: 0,
+    1.5: 0,
+    2: 0
+}
+
+export function TotalEffectiveHours(hours: HourEntry[], verbose: boolean = false): AllHours {
     if (verbose) console.table(PayWithReason(hours).map(payBlocksToString));
 
+    const reducer = (a: AllHours, b: AllHours): AllHours => {
+        return {
+            1: a[1] + b[1],
+            1.5: a[1.5] + b[1.5],
+            2: a[2] + b[2]
+        }
+    }
+
     return PayWithReason(hours)
-        .map(dayBlocks =>
-            dayBlocks
-                .map(block => block.hours * block.rate)
-                .reduce(sum, 0))
-        .reduce(sum, 0);
+        .map(dayBlocks => dayBlocks
+            .map(block => (<AllHours>{ [block.rate]: block.hours }))
+            .reduce(reducer, AllHoursInit))
+        .reduce(reducer, AllHoursInit);
 }
