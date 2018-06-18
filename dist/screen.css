@@ -13,7 +13,7 @@ body {
     margin-right: 30px;
 }
 
-input {
+.hour-input {
     float: right;
     width: 50px;
 }
