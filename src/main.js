@@ -21,11 +21,14 @@ function readInputs() {
 }
 function doSubmit() {
     let hours = readInputs();
+    let rate = parseFloat($('rate').value) || 0;
     $('response').style.display = "block";
     let allHours = hours_1.TotalEffectiveHours(hours);
-    $('hoursspan1').textContent = '' + allHours[1];
-    $('hoursspan1.5').textContent = '' + allHours[1.5];
-    $('hoursspan2').textContent = '' + allHours[2];
+    $('hoursspan1').textContent = `${allHours[1]} ($${allHours[1] * 1 * rate})`;
+    $('hoursspan1.5').textContent = `${allHours[1.5]} ($${allHours[1.5] * 1.5 * rate})`;
+    $('hoursspan2').textContent = `${allHours[2]} ($${allHours[2] * 2 * rate})`;
+    const effectiveHours = allHours[1] * 1 + allHours[1.5] * 1.5 + allHours[2] * 2;
+    $('hoursspaneff').textContent = `${effectiveHours} ($${effectiveHours * rate})`;
     renderTable(hours_1.PayWithReason(hours));
 }
 function renderTable(data) {
